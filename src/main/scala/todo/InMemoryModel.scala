@@ -4,18 +4,32 @@ import cats.implicits.*
 import scala.collection.mutable
 import todo.data.*
 
-/**
- * The InMemoryModel is a Model that stores all the tasks in RAM, and hence they
- * are lost when the server restarts.
- *
- * You should modify this file.
- */
+/** The InMemoryModel is a Model that stores all the tasks in RAM, and hence
+  * they are lost when the server restarts.
+  *
+  * You should modify this file.
+  */
 object InMemoryModel extends Model:
   /* These are the tasks the application starts with. You can change these if you want. */
   val defaultTasks = List(
-    Id(0) -> Task(State.completedNow, "Complete Effective Scala Week 2", None, List(Tag("programming"), Tag("scala"))),
-    Id(1) -> Task(State.Active, "Complete Effective Scala Week 3", Some("Finish the todo list exercise"), List(Tag("programming"), Tag("scala"), Tag("encapsulation"), Tag("sbt"))),
-    Id(2) -> Task(State.Active, "Make a sandwich", Some("Cheese and salad or ham and tomato?"), List(Tag("food"), Tag("lunch")))
+    Id(0) -> Task(
+      State.completedNow,
+      "Complete Effective Scala Week 2",
+      None,
+      List(Tag("programming"), Tag("scala"))
+    ),
+    Id(1) -> Task(
+      State.Active,
+      "Complete Effective Scala Week 3",
+      Some("Finish the todo list exercise"),
+      List(Tag("programming"), Tag("scala"), Tag("encapsulation"), Tag("sbt"))
+    ),
+    Id(2) -> Task(
+      State.Active,
+      "Make a sandwich",
+      Some("Cheese and salad or ham and tomato?"),
+      List(Tag("food"), Tag("lunch"))
+    )
   )
 
   /* Every Task is associated with an Id. Ids must be unique. */
