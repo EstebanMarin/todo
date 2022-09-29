@@ -1,0 +1,18 @@
+[
+  {
+    "id" : 0,
+    "task" : {
+      "state" : {
+        "state" : "completed",
+        "date" : "2022-09-29T12:33:24.576408-05:00[America/Bogota]"
+      },
+      "description" : "An inactive task",
+      "notes" : null,
+      "tags" : [
+        {
+          "tag" : "c"
+        }
+      ]
+    }
+  }
+]
