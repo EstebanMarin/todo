@@ -90,6 +90,7 @@ object PersistentModel extends Model:
   def create(task: Task): Id =
     val id = loadId().next
     val tasksT: Tasks = Tasks(tasks.toList :+ (id -> task))
+    saveId(id)
     saveTasks(tasksT)
     id
 
