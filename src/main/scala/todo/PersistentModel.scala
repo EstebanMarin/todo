@@ -88,9 +88,9 @@ object PersistentModel extends Model:
    */
 
   def create(task: Task): Id =
-    val id = loadId()
-    val tasks: Tasks = Tasks(List((id -> task)))
-    saveTasks(tasks)
+    val id = loadId().next
+    val tasksT: Tasks = Tasks(tasks.toList :+ (id -> task))
+    saveTasks(tasksT)
     id
 
   def read(id: Id): Option[Task] =
@@ -110,7 +110,7 @@ object PersistentModel extends Model:
     tasks.toMap.get(id) match
       case Some(_) =>
         val updateState: Tasks =
-          Tasks(tasks.toList.filter(_._1 == id))
+          Tasks(tasks.toMap.removed(id))
         saveTasks(updateState)
         true
       case None => false
@@ -135,7 +135,6 @@ object PersistentModel extends Model:
   /** Delete the tasks and id files if they exist.
     */
   def clear(): Unit =
-
     def deleteT(tasksT: List[(Id, Task)]): Unit =
       if tasksT.isEmpty then ()
       else
